@@ -1,0 +1,180 @@
+<div class="content-wrapper container-xxl overflow-hidden p-0">
+
+    <app-content-header [contentHeader]="contentHeader"></app-content-header>
+
+    <div class="card">
+        <div class="classe-descr">
+            <span class="classe-name"> Mastere professionnel developpement mobile</span>
+            <small class="text-muted"> Année universitaire: 2022</small>
+    
+            <div class="classe-card-footer">
+                <span class="departement text-muted">Département: Informatique</span>
+                <span class="students text-muted"><i class="feather icon-users"></i> 28 étudiants</span>
+            </div>
+        </div>
+    </div>
+
+
+<div class="classe-details-container">
+    <div class="card subjects-card">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Matiere</th>
+                        <th>Enseignant</th>
+                        <th>Tests</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="font-weight-bold">Matiere XXXXXXX</span>
+                        </td>
+                        <td><div class="avatar">
+                            <img src="assets/images/portrait/small/avatar-s-5.jpg" alt="Avatar" height="26"
+                                width="26" />
+                        </div> Peter Charls</td>
+
+                        <td><span class="badge badge-pill badge-light-primary mr-1">5/5 Tests</span></td>
+                        <td class="overflow-hidden">
+                                <button type="button" class="btn btn-sm hide-arrow" 
+                                    data-toggle="dropdown">
+                                    <i data-feather="more-vertical"></i>
+                                </button>
+                                
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <span class="font-weight-bold">Matiere XXXXXXX</span>
+                        </td>
+                        <td><div class="avatar">
+                            <img src="assets/images/portrait/small/avatar-s-5.jpg" alt="Avatar" height="26"
+                                width="26" />
+                        </div> Peter Charls</td>
+
+                        <td><span class="badge badge-pill badge-light-danger mr-1">1/3 Test</span></td>
+                        <td class="overflow-hidden">
+                                <button type="button" class="btn btn-sm hide-arrow" 
+                                    data-toggle="dropdown">
+                                    <i data-feather="more-vertical"></i>
+                                </button>
+                                
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <span class="font-weight-bold">Matiere XXXXXXX</span>
+                        </td>
+                        <td><div class="avatar">
+                            <img src="assets/images/portrait/small/avatar-s-5.jpg" alt="Avatar" height="26"
+                                width="26" />
+                        </div> Peter Charls</td>
+
+                        <td><span class="badge badge-pill badge-light-primary mr-1">3/3 Tests</span></td>
+                        <td class="overflow-hidden">
+                                <button type="button" class="btn btn-sm hide-arrow" 
+                                    data-toggle="dropdown">
+                                    <i data-feather="more-vertical"></i>
+                                </button>
+                                
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <span class="font-weight-bold">Matiere XXXXXXX</span>
+                        </td>
+                        <td><div class="avatar">
+                            <img src="assets/images/portrait/small/avatar-s-5.jpg" alt="Avatar" height="26"
+                                width="26" />
+                        </div> Peter Charls</td>
+
+                        <td><span class="badge badge-pill badge-light-warning mr-1">2/3 Tests</span></td>
+                        <td class="overflow-hidden">
+                                <button type="button" class="btn btn-sm hide-arrow" 
+                                    data-toggle="dropdown">
+                                    <i data-feather="more-vertical"></i>
+                                </button>
+                                
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <span class="font-weight-bold">Matiere XXXXXXX</span>
+                        </td>
+                        <td><div class="avatar">
+                            <img src="assets/images/portrait/small/avatar-s-5.jpg" alt="Avatar" height="26"
+                                width="26" />
+                        </div> Peter Charls</td>
+
+                        <td><span class="badge badge-pill badge-light-secondary mr-1">Aucun test</span></td>
+                        <td class="overflow-hidden">
+                                <button type="button" class="btn btn-sm hide-arrow" 
+                                    data-toggle="dropdown">
+                                    <i data-feather="more-vertical"></i>
+                                </button>
+                                
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <span class="font-weight-bold">Matiere XXXXXXX</span>
+                        </td>
+                        <td><div class="avatar">
+                            <img src="assets/images/portrait/small/avatar-s-5.jpg" alt="Avatar" height="26"
+                                width="26" />
+                        </div> Peter Charls</td>
+
+                        <td><span class="badge badge-pill badge-light-primary mr-1">4/4 Tests</span></td>
+                        <td class="overflow-hidden">
+                                <button type="button" class="btn btn-sm hide-arrow" 
+                                    data-toggle="dropdown">
+                                    <i data-feather="more-vertical"></i>
+                                </button>
+                                
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card students-card">
+            <div class="card-body profile-suggestion">
+              <h5 class="mb-2">Liste des étudiants</h5>
+              <!-- user suggestions -->
+              <div
+                class="d-flex justify-content-start align-items-center"
+                [class.mb-1]="
+                  students.length - 1 !==
+                  students.indexOf(student)
+                "
+                *ngFor="let student of students; let i = index"
+              >
+                <div class="avatar mr-1">
+                  <img src="assets/images/avatars/1-small.png" alt="avatar img" height="40" width="40" />
+                </div>
+                <div class="profile-user-info">
+                  <h6 class="mb-0">{{ student.name + (i+1) }}</h6>
+                  <small class="text-muted">{{ student.status }}</small>
+                </div>
+                <div class="profile-star ml-auto">
+                  <button class="btn icon-btn">
+                    <i class="feather icon-edit"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+    </div>
+
+</div>
+
+</div>

@@ -1,0 +1,195 @@
+
+<div class="content-wrapper container-xxl overflow-hidden p-0">
+
+  <app-content-header [contentHeader]="contentHeader"></app-content-header>
+
+
+<section class="modern-vertical-wizard">
+  <div id="stepper4" class="bs-stepper vertical wizard-modern modern-vertical-wizard-example">
+    <div class="bs-stepper-header">
+      <div class="step" data-target="#account-details-vertical-modern">
+        <button type="button" class="step-trigger">
+          <span class="bs-stepper-box">
+            <i data-feather="folder" class="font-medium-3"></i>
+          </span>
+          <span class="bs-stepper-label">
+            <span class="bs-stepper-title">Classe</span>
+            <span class="bs-stepper-subtitle">Détails de la classe</span>
+          </span>
+        </button>
+      </div>
+      <div class="step" data-target="#personal-info-vertical-modern">
+        <button type="button" class="step-trigger">
+          <span class="bs-stepper-box">
+            <i data-feather="book-open" class="font-medium-3"></i>
+          </span>
+          <span class="bs-stepper-label">
+            <span class="bs-stepper-title">Matières</span>
+            <span class="bs-stepper-subtitle">Liste des matières</span>
+          </span>
+        </button>
+      </div>
+      <div class="step" data-target="#address-step-vertical-modern">
+        <button type="button" class="step-trigger">
+          <span class="bs-stepper-box">
+            <i data-feather="smile" class="font-medium-3"></i>
+          </span>
+          <span class="bs-stepper-label">
+            <span class="bs-stepper-title">Etudiants</span>
+            <span class="bs-stepper-subtitle">Liste des étudiants</span>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div class="bs-stepper-content">
+      <div id="account-details-vertical-modern" class="content">
+        <div class="content-header">
+          <h5 class="mb-0">Classe</h5>
+          <small class="text-muted">Ajouter les détails de la classe.</small>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label class="form-label" for="nom">Nom de la classe</label>
+            <input type="text" id="nom" [(ngModel)]="classeToAdd.name" class="form-control"
+              placeholder="Nom de la classe" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label class="form-label" for="designation">Désignation</label>
+            <input type="text" id="designation" class="form-control" [(ngModel)]="classeToAdd.shortName"
+              placeholder="Désignation" />
+          </div>
+          <div class="form-group col-md-6">
+            <label class="form-label" for="annee">Année universitaire</label>
+            <input type="number" id="annee" [(ngModel)]="classeToAdd.year" mask="0000" class="form-control"
+              placeholder="Année universitaire" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label class="form-label" for="annee">Département</label>
+            <input type="text" id="dep" [(ngModel)]="classeToAdd.department" class="form-control"
+              placeholder="Département"/>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between">
+
+          <button class="btn btn-primary btn-next" (click)="onSubmit()" rippleEffect>
+            <span class="align-middle d-sm-inline-block d-none">Suivant</span>
+            <i data-feather="arrow-right" class="align-middle ml-sm-25 ml-0"></i>
+          </button>
+        </div>
+      </div>
+      <div id="personal-info-vertical-modern" class="content">
+        <div class="content-header">
+          <h5 class="mb-0">Matières</h5>
+          <small>Ajouter les matières et les enseignants</small>
+        </div>
+
+        <label>Sélectionner les matières</label>
+        <div class="form-group">
+          <!-- Basic Multi select -->
+          <ng-select [items]="subjectsToSelect | async" (change)="subjectSelected($event)" [multiple]="true" [closeOnSelect]="false" [searchable]="true"
+            bindLabel="name" bindValue="_id" placeholder="Sélectionner les matières">
+          </ng-select>
+          <!--/ Basic Multi select -->
+        </div>
+
+
+        <div class="selected-subjects-list" *ngIf="selectedSubjects">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th style="width: 40%;">Matière</th>
+                  <th style="width: 20%;">Type</th>
+                  <th style="width: 40%;">Enseignant</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let subj of selectedSubjects">
+                  <td>
+                    <span class="font-weight-bold">{{subj.name}}</span>
+                  </td>
+                  <td>
+                    {{subj.type || 'Atelier'}}<br>
+                    <small class="text-muted">{{subj.hours}} heures</small>
+                  </td>
+                  <td>
+                    <ng-select [items]="professors | async" [multiple]="false" [closeOnSelect]="true"
+                      [searchable]="true" bindLabel="name" bindValue="_id" placeholder="Sélectionner un enseignant"
+                      [(ngModel)]="subj.professorId">
+
+                      <ng-template ng-label-tmp let-item="item" let-clear="clear">
+                        <span class="ng-value-label"
+                          ><img [src]="item.photo || 'assets/images/avatars/1-small.png'" width="20px" height="20px" /> {{ item.name }}</span
+                        >
+                        <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                      </ng-template>
+
+
+                    </ng-select>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+
+
+        <div class="d-flex justify-content-between">
+          <button class="btn btn-outline-primary btn-prev" (click)="modernVerticalPrevious()" rippleEffect>
+            <i data-feather="arrow-left" class="align-middle mr-sm-25 mr-0"></i>
+            <span class="align-middle d-sm-inline-block d-none">Précédent</span>
+          </button>
+          <button class="btn btn-primary btn-next" (click)="modernVerticalNext()" rippleEffect>
+            <span class="align-middle d-sm-inline-block d-none">Suivant</span>
+            <i data-feather="arrow-right" class="align-middle ml-sm-25 ml-0"></i>
+          </button>
+        </div>
+      </div>
+      <div id="address-step-vertical-modern" class="content">
+        <div class="content-header">
+          <h5 class="mb-0">Etudiants</h5>
+          <small>Ajouter la liste des étudiants.</small>
+        </div>
+
+        <label>Sélectionner des étudiants</label>
+        <div class="form-group">
+          <!-- Basic Multi select -->
+          <ng-select [items]="studentsToSelect | async" [multiple]="true" [closeOnSelect]="false" [searchable]="true"
+            bindLabel="name" bindValue="_id" [(ngModel)]="classeToAdd.students" placeholder="Sélectionner des étudiants">
+            <ng-template ng-label-tmp let-item="item" let-clear="clear">
+              <span class="ng-value-label"
+                ><img [src]="item.photo" width="20px" height="20px" /> {{ item.name }}</span
+              >
+              <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+            </ng-template>
+          </ng-select>
+          <!--/ Basic Multi select -->
+        </div>
+
+
+        <div class="d-flex justify-content-between">
+          <button class="btn btn-outline-primary btn-prev" (click)="modernVerticalPrevious()" rippleEffect>
+            <i data-feather="arrow-left" class="align-middle mr-sm-25 mr-0"></i>
+            <span class="align-middle d-sm-inline-block d-none">Précédent</span>
+          </button>
+          <button class="btn btn-primary btn-next" (click)="onSubmit()" rippleEffect>
+            <span class="align-middle d-sm-inline-block d-none">Ajouter</span>
+            <i data-feather="arrow-right" class="align-middle ml-sm-25 ml-0"></i>
+          </button>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+
+</div>

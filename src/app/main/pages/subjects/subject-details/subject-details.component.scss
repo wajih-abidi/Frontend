@@ -1,0 +1,66 @@
+.card {
+    height: fit-content;
+}
+
+.chapters-card {
+    width: 100%;
+    margin-left: 20px;
+}
+
+.classes-about-container {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 24.99%;
+    max-width: 24.99%;
+}
+
+.subject-details-content {
+    display: flex;
+    flex-direction: row;
+}
+
+
+@media (max-width: 1200px) {
+    .subject-details-content {
+        flex-direction: column;
+    }
+
+    .chapters-card {
+        margin-left: 0px;
+    }
+
+    .classes-about-container {
+        flex-direction: row;
+        flex: 0 0 100%;
+        max-width: 100%;
+        .subj-details {
+            flex: 0 0 41.66%;
+            max-width: 41.66%;
+            padding-right: 10px;
+        }
+        .classes-list {
+            flex: 0 0 58.33%;
+            max-width: 58.33%;
+            padding-left: 10px;
+        }
+    }
+}
+
+
+@media (max-width: 800px) {
+    .classes-about-container {
+        flex-direction: column;
+        flex: 0 0 100%;
+        max-width: 100%;
+        .subj-details {
+            flex: 0 0 100%;
+            max-width: 100%;
+            padding: 0px;
+        }
+        .classes-list {
+            flex: 0 0 100%;
+            max-width: 100%;
+            padding: 0px;
+        }
+    }
+}

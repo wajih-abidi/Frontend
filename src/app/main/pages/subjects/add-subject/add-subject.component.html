@@ -1,0 +1,95 @@
+<div class="content-wrapper container-xxl overflow-hidden p-0">
+
+<app-content-header [contentHeader]="contentHeader"></app-content-header>
+
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Ajouter une matière</h4>
+    </div>
+
+    <div class="card-body">
+        <form class="form">
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="first-name-column">Matière</label>
+                        <input type="text" id="first-name-column" class="form-control" name="matier" [(ngModel)]="subjectToAdd.name"
+                            placeholder="Matière" name="fname-column" />
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="last-name-column">Désignation</label>
+                        <input type="text" id="last-name-column" [(ngModel)]="subjectToAdd.shortName"
+                            class="form-control" placeholder="Désignation" name="lname-column" />
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <label>Type</label>
+                    <div class="form-group">
+                        <ng-select [items]="subjectTypes" [multiple]="false" [closeOnSelect]="true" [searchable]="false"
+                            placeholder="Type de la matière" name="type" [(ngModel)]="subjectToAdd.type">
+                        </ng-select>
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="country-floating">Nombre d'heures</label>
+                        <input type="number" id="country-floating" class="form-control"
+                            name="country-floating" [(ngModel)]="subjectToAdd.hours"
+                            placeholder="Nombre d'heures par semaine" />
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 col-12" style="margin-bottom: 50px;">
+                    <label>Description</label>
+                    <quill-editor theme='snow' ngDefaultControl [(ngModel)]="subjectToAdd.descr" [ngModelOptions]="{standalone: true}">
+                        <div quill-editor-toolbar>
+                          <span class="ql-formats">
+                            <button class="ql-bold" [title]="'Gras'"></button>
+                            <button class="ql-italic" [title]="'Italique'"></button>
+                            <button class="ql-underline" [title]="'Souligné'"></button>
+                          </span>
+                          <span class="ql-formats">
+                            <select class="ql-align" [title]="'Aligment'">
+                              <option selected></option>
+                              <option value="center"></option>
+                              <option value="right"></option>
+                              <option value="justify"></option>
+                            </select>
+                          </span>
+                          <span class="ql-formats">
+                            <button class="ql-list" value="ordered" type="button"></button>
+                            <button class="ql-list" value="bullet" type="button"></button>
+                          </span>
+                          <span class="ql-formats">
+                            <button class="ql-header" value="1"></button>
+                            <button class="ql-header" value="2"></button>
+                          </span>
+                          <span class="ql-formats">
+                            <button class="ql-script" value="sub" type="button"></button>
+                            <button class="ql-script" value="super" type="button"></button>
+                          </span>
+                        </div>
+                      </quill-editor>
+                </div>
+
+                
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="company-column">Coefficient</label>
+                        <input type="number" id="company-column" class="form-control" name="company-column"
+                            [(ngModel)]="subjectToAdd.coef"  placeholder="Coefficient" />
+                    </div>
+                </div>
+                
+
+                <div class="col-12 d-flex justify-content-end">
+                    <button type="button" (click)="addSubject()" [disabled]="ADDING" rippleEffect class="btn btn-primary mr-1">{{ADDING ? 'Chargement...' : 'Ajouter'}}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>

@@ -1,0 +1,36 @@
+<div class="card">
+    <div class="classe-avatar-container waves-effect waves-float">
+        <span>
+            {{classe.shortName}}
+        </span>
+    </div>
+    <div class="classe-descr">
+        <span class="classe-name"> {{classe.name}}</span>
+        <small class="text-muted"> Année universitaire: {{classe.year}}</small>
+
+        <div class="classe-card-footer">
+            <span class="departement text-muted">Département: {{classe.department}}</span>
+
+            <span class="students text-muted"><i class="feather icon-users"></i> {{classe.studentsNumber['count(*)']}} étudiants</span>
+
+        </div>
+        <!-- <div class="students avatar-group ml-1">
+            <div class="avatar pull-up">
+                <img height="20" width="20" [src]="'assets/images/avatars/5-small.png'" alt="AV">
+            </div>
+            <div class="avatar pull-up">
+                <img height="20" width="20" [src]="'assets/images/avatars/5-small.png'" alt="AV">
+            </div>
+            <div class="avatar pull-up">
+                <img height="20" width="20" [src]="'assets/images/avatars/5-small.png'" alt="AV">
+            </div>
+            <div class="avatar pull-up">
+                <img height="20" width="20" [src]="'assets/images/avatars/5-small.png'" alt="AV">
+            </div>
+            <div class="avatar pull-up">
+                <img height="20" width="20" [src]="'assets/images/avatars/5-small.png'" alt="AV">
+            </div>
+            <span style="margin-left: 10px; padding-top: 3px;" class="text-muted">+ 21 étudiants</span>
+        </div> -->
+    </div>
+</div>

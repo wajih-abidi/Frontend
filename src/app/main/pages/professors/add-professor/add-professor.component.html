@@ -1,0 +1,79 @@
+
+<div class="content-wrapper container-xxl overflow-hidden p-0">
+
+    <app-content-header [contentHeader]="contentHeader"></app-content-header>
+
+<section id="basic-tabs-components">
+    <div class="row match-height">
+        <div class="col-lg-12">
+
+            <ul ngbNav #nav="ngbNav" class="nav nav-pills">
+                <li ngbNavItem>
+                    <a ngbNavLink>Nouvel invitation</a>
+                    <ng-template ngbNavContent>
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Inviter un nouvel étudiant</h4>
+                            </div>
+
+
+                            <div class="card-body">
+                                <form class="form">
+                                    <div class="row">
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="first-name-column">Nom</label>
+                                                <input type="text" id="first-name-column" [(ngModel)]="professorToAdd.lastName" class="form-control"
+                                                    placeholder="Nom" name="fname-column" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="last-name-column">Prénom</label>
+                                                <input type="text" id="last-name-column" [(ngModel)]="professorToAdd.firstName" class="form-control"
+                                                    placeholder="Prénom" name="lname-column" />
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="company-id">N° Carte d'identité</label>
+                                                <input type="number" id="company-id" [(ngModel)]="professorToAdd.cin" class="form-control"
+                                                    name="company-column" placeholder="N° Carte d'identité" />
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="company-column">Email</label>
+                                                <input type="email" id="company-column" [(ngModel)]="professorToAdd.email" class="form-control"
+                                                    name="company-column" placeholder="Email"/>
+                                            </div>
+                                        </div>
+        
+
+                                        <div class="col-12" id="action-btns">
+                                            <button type="submit" rippleEffect (click)="sendMail()"
+                                                class="btn btn-primary mr-1">Inviter</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </ng-template>
+                </li>
+
+                <li ngbNavItem>
+                    <a ngbNavLink>Invitation envoyée</a>
+                    <ng-template ngbNavContent>
+                    </ng-template>
+                </li>
+
+            </ul>
+            <div [ngbNavOutlet]="nav" class="mt-1"></div>
+        </div>
+    </div>
+</section>
+</div>

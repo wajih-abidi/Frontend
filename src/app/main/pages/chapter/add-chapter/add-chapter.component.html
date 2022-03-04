@@ -1,0 +1,60 @@
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Ajouter un chapitre</h4>
+    </div>
+
+    <div class="card-body">
+        <form class="form">
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="first-name-column">Chapitre</label>
+                        <input type="text" id="first-name-column" class="form-control" name="matier" [(ngModel)]="chapterToAdd.name"
+                            placeholder="Matière" name="fname-column"/>
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="last-name-column">Désignation</label>
+                        <input type="text" id="last-name-column" [(ngModel)]="chapterToAdd.shortName"
+                            class="form-control" placeholder="Désignation" name="lname-column" />
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="country-floating">Nombre d'heures</label>
+                        <input type="number" id="country-floating" class="form-control"
+                            name="country-floating" [(ngModel)]="chapterToAdd.hours"
+                            placeholder="Nombre d'heures par semaine" />
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label>Semestre</label>
+                        <ng-select [multiple]="false" [closeOnSelect]="true" [searchable]="false"
+                            placeholder="Type de la matière" name="type" [(ngModel)]="chapterToAdd.semester">
+                            <option value="1">1 ere semestre</option>
+                            <option value="2">2 eme semestre</option>
+                        </ng-select>
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="basicInputFile">Attacher des fichiers</label>
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" name="attachment" id="customFile"/>
+                          <label class="custom-file-label" for="customFile">sélectionner des fichiers</label>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-12 d-flex justify-content-end">
+                    <button type="button" (click)="addChapter()" [disabled]="ADDING" rippleEffect class="btn btn-primary mr-1">{{ADDING ? 'Chargement...' : 'Ajouter'}}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

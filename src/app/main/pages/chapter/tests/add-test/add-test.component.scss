@@ -1,0 +1,14 @@
+
+
+.custom-control {
+    margin-bottom: 10px;
+}
+
+@media (min-width: 575px) {
+    .timePick {
+        margin-top: -14px;
+    }
+    .duration {
+        margin-top: -20px;
+    }
+}

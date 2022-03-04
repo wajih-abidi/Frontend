@@ -1,0 +1,114 @@
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Ajouter un test</h4>
+    </div>
+
+    <div class="card-body">
+        <form class="form">
+            <div class="row d-flex align-items-center">
+                <div class="col-md-8 col-sm-8 col-12">
+                    <div class="row">
+                        <div class="col-sm-8 col-12">
+                            <div class="form-group">
+                                <label>Date et temps du test</label>
+                                <div class="input-group">
+                                    <input class="form-control" placeholder="yyyy-mm-dd" name="Basic Date Picker"
+                                        [(ngModel)]="test.date" ngbDatepicker #basicDP="ngbDatepicker" />
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary feather icon-calendar"
+                                            (click)="basicDP.toggle()" type="button" rippleEffect></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-12 timePick">
+                            <ngb-timepicker [(ngModel)]="test.time" [spinners]="spinnerTP"
+                                [ngModelOptions]="{standalone: true}"></ngb-timepicker>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-4 col-12 duration">
+                    <div class="form-group">
+                        <label for="last-name-column">Durée</label>
+                        <input type="number" id="last-name-column" [(ngModel)]="test.duration" class="form-control"
+                            placeholder="Désignation" name="lname-column" />
+                    </div>
+                </div>
+                <div class="col-12 d-flex justify-content-end">
+                    <button type="button" (click)="addTest()" [disabled]="ADDING" rippleEffect
+                        class="btn btn-primary mr-1">{{ADDING ? 'Chargement...' : 'Ajouter'}}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <form>
+            <ul class="timeline">
+                <li class="timeline-item" *ngFor="let quest of test.questions; let i = index">
+                    <span class="timeline-point timeline-point-indicator"></span>
+                    <div class="timeline-event">
+                        <div class="d-flex justify-content-between flex-sm-row flex-column mb-sm-0 mb-1">
+                            <h6>{{quest.questText}}</h6>
+                            <span class="timeline-event-time">{{quest.questMarks + ' points'}}</span>
+                        </div>
+                        <div *ngFor="let answer of quest.answers; let j = index" class="custom-control custom-checkbox">
+                            <input type="checkbox" [(ngModel)]="answer.correct" [id]="'customRadio' + i + '' + j"
+                                [name]="'customRio' + i + '' + j" class="custom-control-input"
+                                [checked]="answer.correct" />
+                            <label class="custom-control-label"
+                                [for]="'customRadio' + i + '' + j">{{answer.answerText}}</label>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <div class="input-group-prepend" style="height: 38px;">
+                                        <div class="input-group-text">
+                                            <div class="custom-control custom-checkbox" style="margin: 0px;">
+                                                <input type="checkbox" [(ngModel)]="answerFields[i].correct"
+                                                    [id]="'customRadio' + i" [name]="'customRadi' + i"
+                                                    class="custom-control-input" />
+                                                <label class="custom-control-label" [for]="'customRadio' + i"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Ajouter une réponse"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="answerFields[i].answerText">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-primary" (click)="addAnswer(i)">Ajouter</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <hr>
+                </li>
+
+
+                <li class="timeline-item">
+                    <span class="timeline-point timeline-point-indicator"></span>
+                    <div class="timeline-event">
+                        <div class="d-flex justify-content-between flex-sm-row flex-column mb-sm-0 mb-1">
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <input type="text" class="form-control" placeholder="Ajouter une réponse"
+                                        name="quest" [(ngModel)]="questToAdd.questText">
+                                </div>
+                                <div class="col-6">
+                                    <button class="btn btn-primary" (click)="addQuestion()">Ajouter</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>

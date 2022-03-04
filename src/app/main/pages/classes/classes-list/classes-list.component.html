@@ -1,0 +1,9 @@
+<div class="content-wrapper container-xxl overflow-hidden p-0">
+    <app-content-header [contentHeader]="contentHeader"></app-content-header>
+
+    <div class="classes-container" *ngIf="classes$ | async as classes">
+        <app-classes-list-item class="classe-item" [routerLink]="['/home/classes/details', classe.id]" *ngFor="let classe of classes" [classe]="classe"></app-classes-list-item>
+    </div>
+    
+    
+</div>
